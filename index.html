@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strands Solver</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">Strands Solver</h1>
+            <div class="mode-toggle">
+                <button id="mode-edit" class="mode-btn" data-mode="edit">Edit</button>
+                <button id="mode-solve" class="mode-btn active" data-mode="solve">Solve</button>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-area">
+            <!-- Grid Container -->
+            <div class="grid-wrapper">
+                <div id="grid-container" class="grid-container">
+                    <canvas id="grid-canvas"></canvas>
+                </div>
+                <div class="grid-controls">
+                    <button id="clear-grid-btn" class="btn-small">Clear Grid</button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Word List Status -->
+                <div class="status-panel">
+                    <div id="word-list-status" class="status-item">
+                        <span class="status-label">Word List:</span>
+                        <span id="word-count" class="status-value">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- Set Words -->
+                <div class="panel">
+                    <h3 class="panel-title">Found Words</h3>
+                    <div id="set-words-list" class="word-list"></div>
+                    <div class="panel-actions">
+                        <button id="remove-word-btn" class="btn-small">Remove Selected</button>
+                        <button id="clear-words-btn" class="btn-small">Clear All</button>
+                    </div>
+                </div>
+
+                <!-- Proposed Word -->
+                <div class="panel">
+                    <h3 class="panel-title">Selected Word</h3>
+                    <div id="proposed-word" class="proposed-word-display"></div>
+                    <div class="panel-actions">
+                        <button id="add-word-btn" class="btn-primary">Add Word</button>
+                        <button id="blacklist-btn" class="btn-small">Blacklist</button>
+                    </div>
+                </div>
+
+                <!-- Possible Words -->
+                <div class="panel">
+                    <h3 class="panel-title">Possible Words</h3>
+                    <div id="possible-words" class="word-list scrollable"></div>
+                </div>
+
+                <!-- Solver -->
+                <div class="panel">
+                    <h3 class="panel-title">Solver</h3>
+                    <div class="solver-controls">
+                        <label for="max-attempts" class="control-label">Max Attempts:</label>
+                        <input type="number" id="max-attempts" class="control-input" value="100000" min="1000" max="10000000" step="1000">
+                        <small class="control-hint">Higher values search longer for better solutions</small>
+                    </div>
+                    <div class="panel-actions">
+                        <button id="solve-btn" class="btn-primary">Solve Puzzle</button>
+                        <button id="cancel-solve-btn" class="btn-small">Cancel</button>
+                    </div>
+                    <div id="solve-progress" class="progress-display"></div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script type="module" src="app.js?v=14"></script>
+</body>
+</html>

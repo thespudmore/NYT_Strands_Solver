@@ -1,0 +1,414 @@
+/* NYT Strands Color Scheme */
+:root {
+    --strands-mint: #b2ded8;
+    --strands-dark-mint: #3f9ebc;
+    --strands-darker-mint: #0f7ea0;
+    --strands-yellow: #f8cd05;
+    --strands-dark-yellow: #db9e00;
+    --strands-blue: #aedfee;
+    --strands-beige: #dbd8c5;
+    --strands-dark-beige: #c4c1af;
+    
+    --bg-page: #ffffff;
+    --bg-panel: #ffffff;
+    --text-primary: #121212;
+    --text-secondary: #727272;
+    --border-color: #e2e8f0;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--strands-mint);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header */
+.app-header {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--strands-darker-mint);
+    letter-spacing: -0.5px;
+}
+
+.mode-toggle {
+    display: flex;
+    gap: 8px;
+    background: var(--strands-beige);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.mode-btn {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background: var(--bg-panel);
+    color: var(--strands-darker-mint);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mode-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+/* Game Area */
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .game-area {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Grid Wrapper */
+.grid-wrapper {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#grid-canvas {
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid-size-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.grid-size-controls label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.grid-size-controls input[type="number"] {
+    width: 60px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-small, .btn-primary {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-small {
+    background: var(--strands-beige);
+    color: var(--text-primary);
+}
+
+.btn-small:hover {
+    background: var(--strands-dark-beige);
+}
+
+.btn-primary {
+    background: var(--strands-darker-mint);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--strands-dark-mint);
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.panel {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.panel-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--strands-darker-mint);
+    margin-bottom: 15px;
+}
+
+.solver-controls {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.control-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.control-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+}
+
+.control-input:focus {
+    outline: none;
+    border-color: var(--strands-dark-mint);
+}
+
+.control-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.panel-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.panel-actions .btn-small,
+.panel-actions .btn-primary {
+    width: 100%;
+}
+
+/* Status Panel */
+.status-panel {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.status-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--strands-darker-mint);
+}
+
+/* Word Lists */
+.word-list {
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.word-item {
+    padding: 10px 12px;
+    margin: 4px 0;
+    background: var(--strands-beige);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    border: 2px solid transparent;
+}
+
+.word-item:hover {
+    background: var(--strands-blue);
+    border-color: var(--strands-dark-mint);
+}
+
+.word-item.selected {
+    background: var(--strands-blue);
+    border-color: var(--strands-darker-mint);
+    font-weight: 600;
+    color: var(--strands-darker-mint);
+}
+
+.word-item.set-word {
+    background: var(--strands-blue);
+    border-left: 4px solid var(--strands-darker-mint);
+}
+
+.word-item.set-word.selected {
+    background: var(--strands-yellow);
+    border-color: var(--strands-dark-yellow);
+    color: var(--text-primary);
+}
+
+.word-list.scrollable {
+    max-height: 250px;
+}
+
+/* Proposed Word Display */
+.proposed-word-display {
+    padding: 20px;
+    background: var(--strands-yellow);
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    border: 2px solid var(--strands-dark-yellow);
+}
+
+/* Progress Display */
+.progress-display {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--strands-beige);
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Grid size controls removed - fixed 6x8 grid */
+
+/* Grid Cell Editing (when in edit mode) */
+.mode-edit #grid-canvas {
+    cursor: crosshair;
+}
+
+.mode-solve #grid-canvas {
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .game-area {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .grid-size-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .grid-size-controls input[type="number"] {
+        width: 100%;
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.word-item {
+    animation: fadeIn 0.2s ease;
+}
